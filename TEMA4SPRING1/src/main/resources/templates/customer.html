@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ro" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<form th:action="@{/customer}">
+    Filter: <input type="text" name="keyword" th:value="${keyword}" required />
+    &nbsp;
+    <input type="submit" value="Search" />
+    &nbsp;
+    <input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />
+</form>
+<script type="text/javascript">
+    function clearSearch() {
+        window.location = "[[@{/}]]";
+    }
+</script>
+<body>
+<ul>
+    <div>
+    <li th:each="customer:${customers}" th:text="${customers.getName()} + ' ' + ${customers.getEmail()}"></li>
+    </div>
+</ul>
+<!--<div th:each="customers: ${customers}">-->
+<!--    <p th:text="${customers.getName() + ' ' + customers.getEmail()+\n}"></p>-->
+<!--</div>-->
+
+</body>
+</html>
